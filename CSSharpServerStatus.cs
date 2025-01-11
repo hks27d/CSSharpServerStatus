@@ -34,7 +34,9 @@ namespace CSSharpServerStatus
                     if (PlayerEntity != null && PlayerEntity.IsValid && PlayerEntity.PlayerPawn.IsValid && PlayerEntity.Connected == PlayerConnectedState.PlayerConnected && PlayerEntity.UserId.HasValue)
                     {
                         OnlinePlayers++;
-                        if ((AdminManager.PlayerHasPermissions(PlayerEntity, "@css/root")))
+                        if (PlayerEntity.IsBot)
+                            Player.PrintToConsole($"#{PlayerEntity.UserId,-5} | {"BOT",-17} | {"BOT PROTECTED",-15} | {PlayerEntity.PlayerName}");
+                        else if ((AdminManager.PlayerHasPermissions(PlayerEntity, "@css/root")))
                             Player.PrintToConsole($"#{PlayerEntity.UserId,-5} | {PlayerEntity.SteamID,-17} | {"ROOT PROTECTED",-15} | {PlayerEntity.PlayerName}");
                         else if (AdminManager.PlayerHasPermissions(PlayerEntity, "@css/generic"))
                             Player.PrintToConsole($"#{PlayerEntity.UserId,-5} | {PlayerEntity.SteamID,-17} | {"PROTECTED",-15} | {PlayerEntity.PlayerName}");
@@ -69,7 +71,9 @@ namespace CSSharpServerStatus
                     if (PlayerEntity != null && PlayerEntity.IsValid && PlayerEntity.PlayerPawn.IsValid && PlayerEntity.Connected == PlayerConnectedState.PlayerConnected && PlayerEntity.UserId.HasValue)
                     {
                         OnlinePlayers++;
-                        if (AdminManager.PlayerHasPermissions(PlayerEntity, "@css/root"))
+                        if (PlayerEntity.IsBot)
+                            commandInfo.ReplyToCommand($"#{PlayerEntity.UserId,-5} | {"BOT",-17} | {"BOT PROTECTED",-15} | {PlayerEntity.PlayerName}");
+                        else if (AdminManager.PlayerHasPermissions(PlayerEntity, "@css/root"))
                             commandInfo.ReplyToCommand($"#{PlayerEntity.UserId,-5} | {PlayerEntity.SteamID,-17} | {"ROOT PROTECTED",-15} | {PlayerEntity.PlayerName}");
                         else if (AdminManager.PlayerHasPermissions(PlayerEntity, "@css/generic"))
                             commandInfo.ReplyToCommand($"#{PlayerEntity.UserId,-5} | {PlayerEntity.SteamID,-17} | {"PROTECTED",-15} | {PlayerEntity.PlayerName}");
