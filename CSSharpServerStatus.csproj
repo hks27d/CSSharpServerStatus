@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="CounterStrikeSharp.API">
-      <HintPath>..\..\counterstrikesharp-with-runtime-build-299-linux-cff24f4\addons\counterstrikesharp\api\CounterStrikeSharp.API.dll</HintPath>
+      <HintPath>..\..\counterstrikesharp-with-runtime-linux-1.0.318\addons\counterstrikesharp\api\CounterStrikeSharp.API.dll</HintPath>
     </Reference>
   </ItemGroup>
 
